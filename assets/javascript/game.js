@@ -69,33 +69,35 @@ var pokerTerms = {
 
     },
 
-    validateInput: function(userInput){
+    validateInput: function(userInput, inputCode){
         // check if need to start a new game
         if(this.gameEnded === true){
             this.selectTerm();
         }
         else{
-            // check if it's a valid letter
-            if(letters.test(userInput)){
-                // check if letter was already selected
-                userInput = userInput.toUpperCase();
-                if (this.lettersUsed.indexOf(userInput) == -1 ) {
-                    // letter was not used. add to list of used letters
-                    //this.lettersUsed += userInput;
-                    this.lettersUsed.push(userInput);
+            if(inputCode > 64 && inputCode < 91){
+                // check if it's a valid letter
+                if(letters.test(userInput)){
+                    // check if letter was already selected
+                    userInput = userInput.toUpperCase();
+                    if (this.lettersUsed.indexOf(userInput) == -1 ) {
+                        // letter was not used. add to list of used letters
+                        //this.lettersUsed += userInput;
+                        this.lettersUsed.push(userInput);
 
-                    if (this.targetWord.indexOf(userInput) != -1) {
-                        // console.log("Correct");
-                        this.displayArray = this.updateDisplayArray(userInput);
-                        this.isCorrect = true;
-                    }
-                    else {
-                        // console.log("Wrong");
-                        this.livesRemaining -= 1;
-                        this.isCorrect = false;
-                    }
+                        if (this.targetWord.indexOf(userInput) != -1) {
+                            // console.log("Correct");
+                            this.displayArray = this.updateDisplayArray(userInput);
+                            this.isCorrect = true;
+                        }
+                        else {
+                            // console.log("Wrong");
+                            this.livesRemaining -= 1;
+                            this.isCorrect = false;
+                        }
 
-                    this.refreshRound(this.isCorrect);
+                        this.refreshRound(this.isCorrect);
+                    }
                 }
             }
         }
@@ -145,7 +147,7 @@ pokerTerms.selectTerm();
 document.onkeyup = function (event) {
     console.log(event.key);
     document.getElementById('start-message').innerHTML = "";
-    pokerTerms.validateInput(event.key);
+    pokerTerms.validateInput(event.key, event.keyCode);
     /*userInput = event.key;
     if(letters.test(userInput)){
         console.log(userInput);
