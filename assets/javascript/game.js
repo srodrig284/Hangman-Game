@@ -24,7 +24,7 @@ var pokerTerms = {
         // reset all the fields
         this.displayArray = [];
         this.lettersUsed = [];
-        this.livesRemaining = 10;
+        this.livesRemaining = 11;
         this.gameEnded = false; // reset
         //update the blanks on display word
         this.displayArray = this.updateDisplayArray("_");

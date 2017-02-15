@@ -19,42 +19,65 @@
 
 <body>
 <div class="wrapper">
-    <div class="row text-center">
-        <h1>Hangman Picture</h1>
-        <h1>POKER TERMS</h1>
-    </div>
-    <div id="start-game">
-        <!--set box border-->
-        <h1 id="start-message"></h1>
-        <h1 id="message"></h1>
-    </div>
-    <div>
-        <h2>Wins</h2>
-        <p id="wins"></p>
-    </div>
-    <div>
-        <h2>Losses</h2>
-        <p id="losses"></p>
-    </div>
-    <div>
-        <h2>Lives Remaining</h2>
-        <p id="livesRemaining"></p>
-    </div>
-    <div>
-        <h2>Word to guess</h2>
-        <p id="guess-word"></p>
-    </div>
-    <div>
-        <h2>Letters Used</h2>
-        <p id="letters-used"></p>
-    </div>
-    <div>
-
+    <div class="row">
+        <div class="col-xs-4">
+               <img src="assets/images/pokerlogo.jpg">
+        </div>
+        <div class="col-xs-8">
+            <div class="jumbotron">
+                <h1>Hangman</h1>
+            </div>
+        </div>
     </div>
 
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-5">
+           <!-- <div class="hangman_images">
+                <img src="assets/images/hangman0.jpg">
+            </div>-->
+        </div>
+        <div class="col-xs-7">
+            <div class="row">
+                <div id="start-game">
+                    <!--set box border-->
+                    <h1 id="start-message"></h1>
+                    <h1 id="message"></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <h2>Wins</h2>
+                    <p id="wins"></p>
+                </div>
+                <div class="col-xs-3">
+                    <h2>Losses</h2>
+                    <p id="losses"></p>
+                </div>
+                <div class="col-xs-6">
+                    <h2>Lives Remaining</h2>
+                    <p id="livesRemaining"></p>
+                </div>
+            </div>
 
+            <div>
+                <h2>GUESS THIS POKER WORD</h2>
+                <p id="guess-word"></p>
+            </div>
+            <div>
+                <h2>Letters Used</h2>
+                <p id="letters-used"></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div> <!--END .wrapper-->
+
+<div class="push"></div>
+
+<div class="footer">
+    <p>&copy; Copyright 2016 - Sandra Rodriguez</p>
 </div>
-
 
 
 
