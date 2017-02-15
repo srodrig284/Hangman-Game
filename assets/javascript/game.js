@@ -1,7 +1,6 @@
 
 // Only characters allowed to use as valid inputs.
-//var letters = /^[A-Za-z]+$/;
-var letters = /[A-Za-z]/;
+var letters = /^[A-Za-z]+$/;
 
 var pokerTerms = {
     wins:  0,
@@ -19,25 +18,35 @@ var pokerTerms = {
 
     //picks term from the list
     selectTerm: function() {
+        this.targetWordArray = [];
         this.targetWord = this.selectRandomWord();  // select random word
         this.targetWordArray = this.targetWord.split("");
         console.log(this.targetWordArray);
 
-        // update the blanks on display word
+        // reset all the fields
         this.displayArray = [];
-        this.updateDisplayArray("_");
         this.lettersUsed = [];
         this.livesRemaining = 10;
         this.gameEnded = false; // reset
+        //update the blanks on display word
+        this.displayArray = this.updateDisplayArray("_");
 
         // set initial values
-        document.getElementById('wins').innerHTML = this.wins;
-        document.getElementById('losses').innerHTML = this.losses;
-        document.getElementById('livesRemaining').innerHTML = this.livesRemaining;
-        document.getElementById('guess-word').innerHTML = this.displayArray.join(" ");
-        document.getElementById('letters-used').innerHTML = this.lettersUsed.join(" ");
-        document.getElementById('start-message').innerHTML = "Press a letter key to start";
-        document.getElementById('message').innerHTML = "";
+        //document.getElementById('wins').innerHTML = this.wins;
+        $("#wins").html(this.wins);
+        //document.getElementById('losses').innerHTML = this.losses;
+        $("#losses").html(this.losses);
+        //document.getElementById('livesRemaining').innerHTML = this.livesRemaining;
+        $("#livesRemaining").html(this.livesRemaining);
+        //document.getElementById('guess-word').innerHTML = this.displayArray.join(" ");
+        //document.getElementById('guess-word').innerHTML = this.displayArray.toString();
+        $("#guess-word").html(this.displayArray.join(" "));
+        //document.getElementById('letters-used').innerHTML = this.lettersUsed.join(" ");
+        $("#letters-used").html(this.lettersUsed.join(" "));
+        //document.getElementById('start-message').innerHTML = "Press a letter key to start";
+        $("#start-message").html("Press a letter key to start");
+        //document.getElementById('message').innerHTML = "";
+        $("#message").html("");
     },
 
     selectRandomWord: function(){
@@ -105,13 +114,16 @@ var pokerTerms = {
 
     refreshRound: function(isCorrect){
         if (isCorrect) {
-            document.getElementById('guess-word').innerHTML = this.displayArray.join(" ");
+            //document.getElementById('guess-word').innerHTML = this.displayArray.join(" ");
+            $("#guess-word").html(this.displayArray.join(" "));
         }
         else {
-            document.getElementById('livesRemaining').innerHTML = this.livesRemaining;
+            //document.getElementById('livesRemaining').innerHTML = this.livesRemaining;
+            $("#livesRemaining").html(this.livesRemaining);
         }
 
-        document.getElementById('letters-used').innerHTML = this.lettersUsed.join(" ");
+        //document.getElementById('letters-used').innerHTML = this.lettersUsed.join(" ");
+        $("#letters-used").html(this.lettersUsed.join(" "));
 
         if (this.targetWord.split("").toString() === this.displayArray.toString()) {
                 this.endRound(true);  // win
@@ -124,16 +136,21 @@ var pokerTerms = {
     endRound: function(winlose){
         if(winlose){
             this.wins += 1;
-            document.getElementById('message').innerHTML = "YOU WIN!";
+            //document.getElementById('message').innerHTML = "YOU WIN!";
+            $("#message").html("YOU WIN!");
         }
         else{
             this.losses += 1;
-            document.getElementById('message').innerHTML = "YOU LOSE!";
+            //document.getElementById('message').innerHTML = "YOU LOSE!";
+            $("#message").html("YOU LOSE!");
         }
         this.gameEnded = true;
-        document.getElementById('start-message').innerHTML = "Press any key to start";
-        document.getElementById('wins').innerHTML = this.wins;
-        document.getElementById('losses').innerHTML = this.losses;
+        //document.getElementById('start-message').innerHTML = "Press any key to start";
+        $("#start-message").html("Press any key to start");
+        //document.getElementById('wins').innerHTML = this.wins;
+        $("#WINS").html(this.wins);
+        //document.getElementById('losses').innerHTML = this.losses;
+        $("#losses").html(this.losses);
         //pokerTerms.startRound();
     }
 
@@ -146,7 +163,8 @@ pokerTerms.selectTerm();
 
 document.onkeyup = function (event) {
     console.log(event.key);
-    document.getElementById('start-message').innerHTML = "";
+    //document.getElementById('start-message').innerHTML = "";
+    $("#start-message").html("");
     pokerTerms.validateInput(event.key, event.keyCode);
     /*userInput = event.key;
     if(letters.test(userInput)){
