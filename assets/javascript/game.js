@@ -114,6 +114,10 @@ var pokerTerms = {
                     }
                 }
             }
+            else {
+                $("#start-message").show();
+                $("#start-message").text("HEY, LETTERS ONLY!!!");
+            }
         }
     },
 
