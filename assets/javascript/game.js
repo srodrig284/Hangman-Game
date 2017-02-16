@@ -2,6 +2,20 @@
 // Only characters allowed to use as valid inputs.
 var letters = /^[A-Za-z]+$/;
 
+var wrongAudio = document.createElement("AUDIO");  // audio for wrong guess
+wrongAudio.setAttribute("src", "assets/audio/multimedia_retro_game_gun_shot.mp3");
+
+var rightAudio = document.createElement("AUDIO");  // audio for correct guess
+rightAudio.setAttribute("src", "assets/audio/bell_small_001.mp3");
+
+var loseAudio = document.createElement("AUDIO");  // audio when game is lost
+loseAudio.setAttribute("src", "assets/audio/zapsplat_multimedia_game_lose_negative_003.mp3");
+
+var winAudio = document.createElement("AUDIO");   // audio when game is won
+winAudio.setAttribute("src", "assets/audio/zapsplat_multimedia_game_one_up_extra_life_005.mp3");
+
+
+
 var pokerTerms = {
     wins:  0,
     losses:  0,
@@ -102,11 +116,13 @@ var pokerTerms = {
                         if (this.targetWord.indexOf(userInput) != -1) {
                             // console.log("Correct");
                             this.displayArray = this.updateDisplayArray(userInput);
+                            rightAudio.play();
                             this.isCorrect = true;
                         }
                         else {
                             // console.log("Wrong");
                             this.livesRemaining -= 1;
+                            wrongAudio.play();
                             this.isCorrect = false;
                         }
 
@@ -147,10 +163,12 @@ var pokerTerms = {
         $("#message").show();
         if(winlose){
             this.wins += 1;
+            winAudio.play();
             $("#message").html("YOU WIN!");
         }
         else{
             this.losses += 1;
+            loseAudio.play();
             $("#message").html("YOU LOSE!");
         }
         this.gameEnded = true;
