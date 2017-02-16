@@ -48,7 +48,8 @@ body{
 }
 
 .container-fluid {
-    border: 1px solid yellow;
+    border: 1px dashed yellow;
+    margin-top: 20px;
 }
 
 #start-message {
