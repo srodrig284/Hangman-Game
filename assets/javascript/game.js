@@ -14,6 +14,21 @@ var pokerTerms = {
     gameEnded: false,
     termsList: ['straight', 'flush', 'ace in the hole', 'dealer', 'blinds', 'bad beat', 'big blind', 'small blind', 'donkey', 'heads up',
     'pocket rockets', 'raise', 'the nuts', 'royal flush', 'kicker', 'gutshot', 'under the gun', 'short stack', 'side pot', 'straddle'],
+    stickImages: ['assets/images/hangman10.png',
+                  'assets/images/hangman8.png',
+                  'assets/images/hangman7.png',
+                  'assets/images/hangman6.png',
+                  'assets/images/hangman5.png',
+                  'assets/images/hangman4.png',
+                  'assets/images/hangman3.png',
+                  'assets/images/hangman2.png',
+                  'assets/images/hangman1.png',
+                  'assets/images/hangman0.png'],
+
+
+    //$("#picture").attr("src", "assets/images/eighty.png");
+    //<img class="img-responsive center-block" src="assets/images/eighty.png" id="picture">
+
     //picks term from the list
     selectTerm: function() {
         this.targetWordArray = [];
@@ -24,7 +39,7 @@ var pokerTerms = {
         // reset all the fields
         this.displayArray = [];
         this.lettersUsed = [];
-        this.livesRemaining = 11;
+        this.livesRemaining = 10;
         this.gameEnded = false; // reset
         //update the blanks on display word
         this.displayArray = this.updateDisplayArray("_");
@@ -35,8 +50,11 @@ var pokerTerms = {
         $("#livesRemaining").html(this.livesRemaining);
         $("#guess-word").html(this.displayArray.join(" ").replace(/\^/gi, "&nbsp" ));
         $("#letters-used").html(this.lettersUsed.join(" "));
-        $("#start-message").html("Press a letter key to start");
-        $("#message").html("");
+        $("#start-message").show();
+        $("#start-message").text("Press a letter key to start");
+        //$("#message").html("");
+        $("#message").hide();
+        $("#hangman_images").attr("src", "");
     },
 
     selectRandomWord: function(){
@@ -105,6 +123,7 @@ var pokerTerms = {
         }
         else {
             $("#livesRemaining").html(this.livesRemaining);
+            $("#hangman_images").attr("src", this.stickImages[this.livesRemaining]);
         }
 
         $("#letters-used").html(this.lettersUsed.join(" "));
@@ -112,15 +131,16 @@ var pokerTerms = {
         // check if the word was guessed
         var a = this.displayArray.indexOf("_");
         if (a < 0){
-            this.endRound(true);
+                this.endRound(true);
         }
         else if (this.livesRemaining == 0) {
-            this.endRound(false); // lose
+                this.endRound(false);
         }
     },
 
 
     endRound: function(winlose){
+        $("#message").show();
         if(winlose){
             this.wins += 1;
             $("#message").html("YOU WIN!");
@@ -130,7 +150,8 @@ var pokerTerms = {
             $("#message").html("YOU LOSE!");
         }
         this.gameEnded = true;
-        $("#start-message").html("Press any key to start");
+        $("#start-message").show();
+        $("#start-message").text("Press any key to start");
         $("#WINS").html(this.wins);
         $("#losses").html(this.losses);
     }
@@ -142,6 +163,6 @@ pokerTerms.selectTerm();
 
 document.onkeyup = function (event) {
     console.log(event.key);
-    $("#start-message").html("");
+    $("#start-message").hide();
     pokerTerms.validateInput(event.key, event.keyCode);
 };
