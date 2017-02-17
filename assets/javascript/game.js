@@ -171,7 +171,8 @@ $(document).ready(function() {
             else{
                 this.losses += 1;
                 loseAudio.play();
-                $("#message").html("YOU LOSE!");
+                $("#message").show()
+                             .html("YOU LOSE!");
             }
             this.gameEnded = true;
             $("#start-message").show()
