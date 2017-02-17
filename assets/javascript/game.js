@@ -173,6 +173,7 @@ $(document).ready(function() {
                 loseAudio.play();
                 $("#message").show()
                              .html("YOU LOSE!");
+                alert("Correct word is " + this.targetWord);
             }
             this.gameEnded = true;
             $("#start-message").show()
