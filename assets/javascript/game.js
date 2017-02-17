@@ -67,9 +67,8 @@ var pokerTerms = {
         $("#livesRemaining").html(this.livesRemaining);
         $("#guess-word").html(this.displayArray.join(" ").replace(/\^/gi, "&nbsp" ));
         $("#letters-used").html(this.lettersUsed.join(" "));
-        $("#start-message").show();
-        $("#start-message").text("Press a letter key to start");
-        //$("#message").html("");
+        $("#start-message").show()
+                           .text("Press a letter key to start");
         $("#message").hide();
         $("#hangman_images").attr("src", "");
     },
@@ -134,8 +133,8 @@ var pokerTerms = {
                 }
             }
             else {
-                $("#start-message").show();
-                $("#start-message").text("HEY, LETTERS ONLY!!!");
+                $("#start-message").show()
+                                   .text("HEY, LETTERS ONLY!!!");
             }
         }
     },
@@ -163,11 +162,11 @@ var pokerTerms = {
 
 
     endRound: function(winlose){
-        $("#message").show();
         if(winlose){
             this.wins += 1;
             winAudio.play();
-            $("#message").html("YOU WIN!");
+            $("#message").show()
+                         .html("YOU WIN!");
         }
         else{
             this.losses += 1;
@@ -175,8 +174,8 @@ var pokerTerms = {
             $("#message").html("YOU LOSE!");
         }
         this.gameEnded = true;
-        $("#start-message").show();
-        $("#start-message").text("Press any key to start");
+        $("#start-message").show()
+                           .text("Press any key to start");
         $("#WINS").html(this.wins);
         $("#losses").html(this.losses);
     }
