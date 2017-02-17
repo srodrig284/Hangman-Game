@@ -9,6 +9,7 @@ body{
 
 .jumbotron{
     background-color: black;
+    height: 150px;
 }
 
 .jumbotron h1{
