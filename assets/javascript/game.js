@@ -41,11 +41,7 @@ $(document).ready(function() {
                       'assets/images/hangman2.png',
                       'assets/images/hangman1.png',
                       'assets/images/hangman0.png'],
-
-
-        //$("#picture").attr("src", "assets/images/eighty.png");
-        //<img class="img-responsive center-block" src="assets/images/eighty.png" id="picture">
-
+        
         //picks term from the list
         selectTerm: function() {
             this.targetWordArray = [];
